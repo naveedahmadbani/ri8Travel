@@ -21,6 +21,7 @@
         "sass-loader": "^11.0.1"
     },
     "dependencies": {
-        "ckeditor": "^4.12.1"
+        "ckeditor": "^4.12.1",
+        "summernote": "^0.8.20"
     }
 }

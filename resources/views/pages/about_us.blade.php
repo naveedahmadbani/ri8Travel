@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('content')
-<div class="container-xxl py-5">
+<div class="container-xxl py-5 destination">
     <div class="container">
         <div class="row g-5">
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
@@ -10,12 +10,12 @@
             </div>
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
                 <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
-                <h1 class="mb-4">Welcome to <span class="text-primary">Tourist</span></h1>
-                <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                <h1 class="mb-4">Welcome to <span class="text-primary">Ri8 Travel</span></h1>
+                <p class="mb-4">Ri8 Travel is a travel company that was established in 2016.</p>
+                <p class="mb-4">We offer a wide range of services including visa assistance, visa appointments, hotel bookings, honeymoon packages, and holiday packages.</p>
                 <div class="row gy-2 gx-4 mb-4">
                     <div class="col-sm-6">
-                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>First Class Flights</p>
+                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Visas</p>
                     </div>
                     <div class="col-sm-6">
                         <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Handpicked Hotels</p>

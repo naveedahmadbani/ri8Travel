@@ -46,30 +46,47 @@
                     tabindex="0"></iframe>
             </div>
             <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
-                <form>
+                <form action="{{ route('visa.request') }}" method="post">
+                        @csrf
                     <div class="row g-3">
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                <input type="text" class="form-control bg-transparent" name="name" placeholder="Your Name">
                                 <label for="name">Your Name</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                <input type="email" class="form-control bg-transparent" name="email" placeholder="Your Email">
                                 <label for="email">Your Email</label>
                             </div>
                         </div>
-                        <div class="col-12">
+                        <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="subject" placeholder="Subject">
-                                <label for="subject">Subject</label>
+                                <input type="text" class="form-control bg-transparent" name="phone" placeholder="Your Phone Number">
+                                <label for="phone">Your Phone Number</label>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-6">
+                            <div class="form-floating date" id="date3" data-target-input="nearest">
+                                <input type="text" class="form-control bg-transparent datetimepicker-input" name="datetime" placeholder="Date & Time" data-target="#date3" data-toggle="datetimepicker" />
+                                <label for="datetime">Date & Time</label>
+                            </div>
+                        </div> -->
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <select class="form-select bg-transparent" name="slug">
+                                    @foreach($visas as $visa)
+                                        <option value="{{$visa->slug}}">{{$visa->visa_name}}</option>
+                                    @endforeach
+                                </select>
+                                <label for="select1">Destination</label>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-floating">
-                                <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
-                                <label for="message">Message</label>
+                                <textarea class="form-control bg-transparent" placeholder="Special Request" name="special_request" style="height: 100px"></textarea>
+                                <label for="message">Special Request</label>
                             </div>
                         </div>
                         <div class="col-12">

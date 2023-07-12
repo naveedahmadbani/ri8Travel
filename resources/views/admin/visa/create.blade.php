@@ -2,106 +2,19 @@
 @section('content')
 
 <div class="content">
-    <!-- Navbar Start -->
-        <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
-            <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
-                <h2 class="text-primary mb-0"><i class="fa fa-user-edit"></i></h2>
-            </a>
-            <a href="#" class="sidebar-toggler flex-shrink-0">
-                <i class="fa fa-bars"></i>
-            </a>
-            <form class="d-none d-md-flex ms-4">
-                <input class="form-control bg-dark border-0" type="search" placeholder="Search">
-            </form>
-            <div class="navbar-nav align-items-center ms-auto">
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                        <i class="fa fa-envelope me-lg-2"></i>
-                        <span class="d-none d-lg-inline-flex">Message</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                        <a href="#" class="dropdown-item">
-                            <div class="d-flex align-items-center">
-                                <img class="rounded-circle" src="{{asset('assets/admin/img/user.jpg')}}" alt="" style="width: 40px; height: 40px;">
-                                <div class="ms-2">
-                                    <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                    <small>15 minutes ago</small>
-                                </div>
-                            </div>
-                        </a>
-                        <hr class="dropdown-divider">
-                        <a href="#" class="dropdown-item">
-                            <div class="d-flex align-items-center">
-                                <img class="rounded-circle" src="{{asset('assets/admin/img/user.jpg')}}" alt="" style="width: 40px; height: 40px;">
-                                <div class="ms-2">
-                                    <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                    <small>15 minutes ago</small>
-                                </div>
-                            </div>
-                        </a>
-                        <hr class="dropdown-divider">
-                        <a href="#" class="dropdown-item">
-                            <div class="d-flex align-items-center">
-                                <img class="rounded-circle" src="{{asset('assets/admin/img/user.jpg')}}" alt="" style="width: 40px; height: 40px;">
-                                <div class="ms-2">
-                                    <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                    <small>15 minutes ago</small>
-                                </div>
-                            </div>
-                        </a>
-                        <hr class="dropdown-divider">
-                        <a href="#" class="dropdown-item text-center">See all message</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                        <i class="fa fa-bell me-lg-2"></i>
-                        <span class="d-none d-lg-inline-flex">Notificatin</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                        <a href="#" class="dropdown-item">
-                            <h6 class="fw-normal mb-0">Profile updated</h6>
-                            <small>15 minutes ago</small>
-                        </a>
-                        <hr class="dropdown-divider">
-                        <a href="#" class="dropdown-item">
-                            <h6 class="fw-normal mb-0">New user added</h6>
-                            <small>15 minutes ago</small>
-                        </a>
-                        <hr class="dropdown-divider">
-                        <a href="#" class="dropdown-item">
-                            <h6 class="fw-normal mb-0">Password changed</h6>
-                            <small>15 minutes ago</small>
-                        </a>
-                        <hr class="dropdown-divider">
-                        <a href="#" class="dropdown-item text-center">See all notifications</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                        <img class="rounded-circle me-lg-2" src="{{asset ('assets/admin/img/user.jpg')}}" alt="" style="width: 40px; height: 40px;">
-                        <span class="d-none d-lg-inline-flex">John Doe</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                        <a href="#" class="dropdown-item">My Profile</a>
-                        <a href="#" class="dropdown-item">Settings</a>
-                        <a href="#" class="dropdown-item">Log Out</a>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    <!-- Navbar End -->
+    @include('admin.layouts.admin_nav')
     <!-- Form Start -->
     <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
             <div class="col-sm-12 col-xl-12">
                 <div class="bg-secondary rounded h-100 p-4">
                     <h6 class="mb-4">Basic Form</h6>
-                    <form>
+                    <form action="{{ route('visa.store') }}" method="post" class="repeater" enctype="multipart/form-data">
+                        @csrf
                         <div class="row margin-wrap">
                             <div class="col-sm-2">
                                 <label for="visa_name" class="form-label">Visa Country</label>
-                                <input type="text" class="form-control"  name="visa_name">
+                                <input type="text" class="form-control"  name="visa_name" >
                             </div>
                             <div class="col-sm-3">
                                 <label for="visa_type" class="form-label">Visa Type</label>
@@ -121,10 +34,18 @@
                             </div>
                         </div>
                         <div class="row margin-wrap">
-                            <div class="col-sm-2">
+                            <!-- <div class="col-sm-2">
                                 <label for="continent" class="form-label">Continent</label>
-                                <input type="text" class="form-control"  name="continent" placeholder="Asia">
-                            </div>
+                                <select class="form-select" name="continent">
+                                    <option value="Asia">Asia</option>
+                                    <option value="Europe">Europe</option>
+                                    <option value="Africa">Africa</option>
+                                    <option value="Antarctica">Antarctica</option>
+                                    <option value="Australia">Australia</option>
+                                    <option value="South_America">South America</option>
+                                    <option value="North_America">North America</option>
+                                </select> 
+                            </div> -->
                             <div class="col-sm-2">
                                 <label for="processing_time" class="form-label">Processing Time</label>
                                 <input type="text" class="form-control"  name="processing_time" placeholder=" 4 weeks">
@@ -154,79 +75,68 @@
                             </div>                  
                         </div>
                         <div class="row margin-wrap">
-                            <div class="col-sm-2">
-                                <label for="description" class="form-label">Description</label>
-                                <textarea class="form-control" id="summernote" name="description" aria-label="With textarea"></textarea>
+                            <div class="col-sm-3">
+                                <label for="visa_type" class="form-label">Status</label>
+                                <select class="form-select" name="status">
+                                    <option value="active">Active</option>
+                                    <option value="disable">Disable</option>
+                                </select>  
                             </div>
                         </div>
-
                         <div class="row margin-wrap">
                             <div class="col-sm-12">
-                                <div class="form-group">
-                                    <H3 for="days">Faqs</H3>
-                                    <br>
-                                    <div id="faq">
-                                        <div data-repeater-list="faq">
-                                            <div class="" data-repeater-item>
-                                                <div class="form-group">
-                                                    <label>{{ __('Question') }}</label>
-                                                    <input type="text" name="question"
-                                                            class="form-control @error('question') is-invalid @enderror"
-                                                            value="{{old('question')}}"
-                                                            placeholder="Enter Question"
-                                                            required>
-                                                    @error('question')
-                                                    <div class="invalid-feedback">
-                                                        {{$message}}
-                                                    </div>
-                                                    @enderror
-                                                </div>
-                                                <div class="form-group" style="display: inline">
-                                                    <label>{{ __('Answer') }}</label>
-                                                    <textarea type="text" name="answer" id="answer"
-                                                                class="form-control answer @error('answer') is-invalid @enderror"
-                                                                value="{{old('answer')}}"
-                                                                placeholder="Enter Answer"></textarea>
-                                                    @error('answer')
-                                                    <div class="invalid-feedback">
-                                                        {{$message}}
-                                                    </div>
-                                                    @enderror
-
-
-                                                    <div class=""
-                                                            style="position: absolute;left: 76px;bottom: 25px;"
-                                                            data-repeater-delete>
-                                                        <button type="button" class="btn btn-danger">Delete
-                                                        </button>
-                                                    </div>
-                                                </div>
-
-
-                                            </div>
-                                        </div>
-                                        <button class="btn btn-primary mb-2 mt-2" data-repeater-create
-                                                type="button">Add
-                                        </button>
-
-
-                                    </div>
-
-                                </div>
+                                <label for="description" class="form-label">Description</label>
+                                <textarea class="form-control" name="description" 
+                                    aria-label="With textarea"></textarea>
                             </div>
+                        </div>
+                        <div class="row margin-wrap">
+                            <div class="col-sm-12">
+                                <label for="important_note" class="form-label">Important Note</label>
+                                <textarea class="form-control summernote" name="important_note" 
+                                    aria-label="With textarea"></textarea>
+                            </div>
+                        </div>
+                        <div class="row margin-wrap">
+                            <div class="col-sm-12">
+                                <label for="document_required" class="form-label">Document Required</label>
+                                <textarea class="form-control summernote" name="document_required" 
+                                    aria-label="With textarea"></textarea>
+                            </div>
+                        </div>
+                        <div class="row margin-wrap">
+                            <div class="col-sm-12">
+                                <label for="employed_r_d" class="form-label">Employed Required Document</label>
+                                <textarea class="form-control summernote" name="employed_r_d" 
+                                    aria-label="With textarea"></textarea>
+                            </div>
+                        </div>
+                        <div class="row margin-wrap">
+                            <div class="col-sm-12">
+                                <label for="self_employed_r_d" class="form-label">Self Employed Required Document</label>
+                                <textarea class="form-control summernote" name="self_employed_r_d" 
+                                    aria-label="With textarea"></textarea>
+                            </div>
+                        </div>
+                        <div class="row margin-wrap">
+                            <div class="col-sm-12">
+                                <label for="studen_r_d" class="form-label">Studen Required Document</label>
+                                <textarea class="form-control summernote" name="studen_r_d" 
+                                    aria-label="With textarea"></textarea>
+                            </div>
+                        </div>
+                        <div class="row margin-wrap">
+                            <div class="col-sm-12">
+                                <label for="retired_r_d" class="form-label">Retired Required Document</label>
+                                <textarea class="form-control summernote" name="retired_r_d" 
+                                    aria-label="With textarea"></textarea>
+                            </div>
+                        </div>
+                        <div class="row margin-wrap">
                             <div class="col-sm-6 mt-4">
                                 <button type="submit" class="btn btn-default btn-primary">Submit</button>
                             </div>
                         </div>
-
-                        <div class="row margin-wrap">
-                            <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Sign in</button>
-
                     </form>
                 </div>
             </div>
@@ -235,8 +145,90 @@
     </div>
 </div>
 @endsection
-@push('scripts')
-@section('javascript')
+ 
+@section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('.summernote').summernote(
+        {
+            toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['bold', 'italic', 'underline']],
+                ['fontsize', ['fontsize', 'fontsizeunit', 'fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph', 'style']],
+                ['Insert', ['picture', 'link', 'video', 'table', 'hr']],
+                ['height', ['height']],
+                ['Misc', ['fullscreen', 'codeview', 'undo', 'redo', 'help']]
+            ],
+            fontsize: true,
+            placeholder: 'Page content',
+            addDefaultFonts: false,
+            height: 300,
+            fontNames: [
+                'Arial', 'Arial Black',
+                'Courier New',
+                'Merriweather',
+                'Comic Sans MS',
+                'sans-serif',
+                'Helvetica',
+                'Trajan',
+                'Garamond Pro',
+                'Futura',
+                'Bodoni',
+                'Verdana',
+                'Tahoma',
+                'Trebuchet MS',
+                'Times New Roman',
+                'Georgia',
+                'Garamond',
+                'Courier New',
+                'Brush Script MT',
 
 
+            ],
+            lineHeights: ['0.2', '0.3', '0.4', '0.5', '0.6', '0.8', '1.0', '1.2', '1.4', '1.5', '2.0', '3.0'],
+            styleTags: [
+                'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'
+            ],
+        });
+    });
+    // function add(line_no) {
+
+    //     $.ajax({
+    //             url: "/faq/html",
+    //             type: "get",
+    //             data: {
+    //                 line_no: line_no,
+    //                 _token: '{{csrf_token()}}'
+    //             },
+    //             dataType: 'json',
+    //             success: function (response) {
+    //                 console.log(response);
+    //                 $('#new').html(response);
+    //             }
+    //         });
+    // } 
+</script>
+<!-- <script>
+        $('#faq').repeater({
+            show: function () {
+                $(this).slideDown();
+
+            },
+
+            hide: function (deleteElement) {
+                if (confirm('Are you sure you want to delete this element?')) {
+                    $(this).slideUp(deleteElement);
+                }
+            },
+
+            ready: function (setIndexes) {
+            },
+            isFirstItemUndeletable: true
+        });
+       
+    </script> -->
 @endsection

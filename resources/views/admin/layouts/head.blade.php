@@ -6,7 +6,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="{{asset ('assetes/admin/img/favicon.ico')}}" rel="icon">
+    <link href="{{asset ('assetes/admin/img/favicon.png')}}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,4 +26,11 @@
 
     <!-- Template Stylesheet -->
     <link href="{{asset ('assets/admin/css/style.css')}}" rel="stylesheet">
+
+    <!-- <link href="{{asset('sumernote/plugins.css')}}" rel="stylesheet"> -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+ 
+ 
+    <!-- <link href="{{asset('sumernote/style.css')}}" rel="stylesheet"> -->
+ 
 </head>
